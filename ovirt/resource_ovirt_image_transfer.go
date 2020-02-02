@@ -247,7 +247,7 @@ func resourceOvirtImageTransferRead(d *schema.ResourceData, meta interface{}) er
 	}
 	d.Set("name", disk.MustAlias())
 	d.Set("size", disk.MustProvisionedSize()/int64(math.Pow(2, 30)))
-	d.Set("format", disk.MustFormat())
+	d.Set("format", string(disk.MustFormat()))
 	d.Set("disk_id", disk.MustId())
 
 	if sds, ok := disk.StorageDomains(); ok {

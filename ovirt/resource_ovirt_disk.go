@@ -236,7 +236,7 @@ func resourceOvirtDiskRead(d *schema.ResourceData, meta interface{}) error {
 	}
 	d.Set("name", disk.MustName())
 	d.Set("size", disk.MustProvisionedSize()/int64(math.Pow(2, 30)))
-	d.Set("format", disk.MustFormat())
+	d.Set("format", string(disk.MustFormat()))
 
 	if sds, ok := disk.StorageDomains(); ok {
 		if len(sds.Slice()) > 0 {
